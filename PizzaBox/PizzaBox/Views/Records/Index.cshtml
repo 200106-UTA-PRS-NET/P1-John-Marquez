@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PizzaBox.Models.RecordsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Total Records</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LocatId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PizzaType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Crust)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<input type="button" onclick="location.href = '@Url.Action("EmpLocation", "Location")' " value="Return" />
+<input type="button" onclick="location.href = '@Url.Action("Index", "Home")' " value="Sign Out" />

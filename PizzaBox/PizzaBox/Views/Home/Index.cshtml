@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome To Marquez's Pizzeria</h1>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <hr />
+    <input type="button" onclick="location.href = '@Url.Action("Login", "Login")' " value="Customer Login" />
+    <hr />
+    <input type="button" class="text-center" onclick="location.href = '@Url.Action("EmpLogin", "Login")' " value="Employee Login" />
+    <hr />
+    <input type="button" class="text-right" onclick="location.href = '@Url.Action("CreateAccount", "Register")' " value="Create An Account" />
+    <hr />
+
+
+
+</body>
+</html>
+
+

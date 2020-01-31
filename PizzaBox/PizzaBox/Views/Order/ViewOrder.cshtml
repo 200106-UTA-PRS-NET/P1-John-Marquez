@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PizzaBox.Models.ViewOrderModel>
+
+@{
+    ViewData["Title"] = "ViewOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Current Order</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pizzaType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.crust)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{double total = 0; }
+    <tbody>
+        @foreach (var item in Model)
+        {
+            total = total + item.total;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pizzaType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.crust)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<body>
+
+<h2>Your total is $@total</h2>
+</body>
+
+<form asp-action="ClearOrder">
+    <div class="form-group">
+        <input type="submit" value="Clear Order" class="btn btn-primary" />
+    </div>
+</form>
+<form asp-action="ConfirmOrder">
+    <div class="form-group">
+        <input type="submit" value="Confirm Order" class="btn btn-primary" />
+    </div>
+</form>
+
+
+
+<input type="button" onclick="location.href = '@Url.Action("Order", "Order")' " value="Return to Order Options" />

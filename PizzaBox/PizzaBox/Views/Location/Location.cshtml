@@ -1,0 +1,35 @@
+﻿@model PizzaBox.Models.LocationViewModel
+@using Pizza_Data.Models;
+@using Pizza_Data;
+
+@{
+    ViewData["Title"] = "Location";
+}
+
+<h1>Welcome, @PCustomer.firstname</h1>
+<br />
+<h4>Please Select a Location</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Location">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @foreach (var loc in ViewBag.Location as IList<PizzaLib.Locations>)
+            {
+                @Html.RadioButtonFor(e => e.Id, loc.Id)<text> @loc.Locat </text>
+                <br />
+                <br />
+                <br />
+            }
+            <div class="form-group">
+                <input type="submit" value="Submit Location" class="btn btn-primary" />
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

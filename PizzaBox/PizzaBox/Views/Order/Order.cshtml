@@ -1,0 +1,98 @@
+﻿@model PizzaBox.Models.OrderModel
+@using Pizza_Data.Models
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Order</h1>
+<hr />
+@if (ViewBag.Message != null)
+{
+    @ViewBag.Message;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pizza Type
+            </th>
+            <th>
+                Small
+            </th>
+            <th>
+                Medium
+            </th>
+            <th>
+                Large
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tbody>
+        @foreach (var piz in ViewBag.Pizza)
+        {
+            <tr>
+                <td>
+                    @piz.PizzaType
+                </td>
+                <td>
+                    $@Math.Round(piz.Small, 2)
+                </td>
+                <td>
+                    $@Math.Round(piz.Med, 2)
+                </td>
+                <td>
+                    $@Math.Round(piz.Large, 2)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Order">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AmountP" class="control-label">Amount of Pizzas</label>
+                <input asp-for="AmountP" class="form-control" />
+                <span asp-validation-for="AmountP" class="text-danger"></span>
+            </div>
+            @foreach (var piz in ViewBag.Pizza as IList<PizzaLib.Pizza>)
+            {
+                @Html.RadioButtonFor(e => e.PizzaType, piz.PizzaType)<text> @piz.PizzaType </text>
+            }
+            <br />
+            <br />
+            <br />
+            @Html.RadioButtonFor(e => e.Size, "small")<text> Small </text>
+            @Html.RadioButtonFor(e => e.Size, "medium")<text> Medium </text>
+            @Html.RadioButtonFor(e => e.Size, "large")<text> Large </text>
+            <br />
+            <br />
+            <br />
+            @Html.RadioButtonFor(e => e.Crust, "thin")<text> Thin </text>
+            @Html.RadioButtonFor(e => e.Crust, "handtossed")<text> Handtossed </text>
+            @Html.RadioButtonFor(e => e.Crust, "pan")<text> Pan </text>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add to Order" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+
+<input type="button" onclick="location.href = '@Url.Action("Options", "Options")' " value="Return to Options" />
+<input type="button" onclick="location.href = '@Url.Action("ViewOrder", "Order")' " value="View Current Order" />
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
