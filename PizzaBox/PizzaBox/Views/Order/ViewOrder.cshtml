@@ -56,7 +56,9 @@
 </table>
 <body>
 
-<h2>Your total is $@total</h2>
+    @{total = Math.Round((Double)total, 2); }
+
+    <h2>Your total is $@total</h2>
 </body>
 
 <form asp-action="ClearOrder">

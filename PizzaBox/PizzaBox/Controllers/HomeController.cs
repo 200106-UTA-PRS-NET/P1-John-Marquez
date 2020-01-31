@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Pizza_Data;
 using PizzaBox.Models;
 
 namespace PizzaBox.Controllers
@@ -20,6 +21,19 @@ namespace PizzaBox.Controllers
 
         public IActionResult Index()
         {
+            LocationHold.Id = 0;
+            LocationHold.Locat = "";
+
+            TotalCost.Tot = 0;
+            PEmployee.Id = 0;
+            PCustomer.Id = 0;
+
+            PEmployee.Uname = "";
+            PCustomer.Uname = "";
+
+            PEmployee.firstname = "";
+            PCustomer.firstname = "";
+
             return View();
         }
 
