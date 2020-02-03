@@ -7,13 +7,13 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
-  pathtosolution: 'PizzaBox/'
-  pathtoproject: 'PizzaBox/PizzaBox'
-  pathtotest: 'PizzaBox/PizzaTest'
+  pathtosolution: 'P1-John-Marquez/PizzaBox/'
+  #pathtoproject: 'PizzaBox/PizzaBox'
+  #pathtotest: 'PizzaBox/PizzaTest'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
