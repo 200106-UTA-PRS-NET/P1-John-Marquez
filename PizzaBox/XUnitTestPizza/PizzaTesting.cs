@@ -34,6 +34,7 @@ namespace XUnitTestPizza
             Assert.Equal(size, rec.Size);
         }
 
+        /*
         [Fact]
         public void checkDates24() // checks if DateTimeChecks methods are working properly
         {
@@ -52,6 +53,7 @@ namespace XUnitTestPizza
             Assert.True(DateTimeCheck.check2hourTest(now));
         }
 
+        
         [Fact]
         public void checkCost() // checks if order cost returns properly
         {
@@ -66,6 +68,7 @@ namespace XUnitTestPizza
 
             Assert.Equal(cost, cal.calculateCostPreset(amount, pizzaSize, pizzaType));
         }
+        */
 
 
     }
