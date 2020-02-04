@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Pizza_Data
 {
     static public class PEmployee // holds the current employee info for futuer reference

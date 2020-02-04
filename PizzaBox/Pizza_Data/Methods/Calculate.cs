@@ -1,8 +1,5 @@
 ﻿using Pizza_Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Pizza_Data.Repository;
 
 namespace Pizza_Data.Methods
 {

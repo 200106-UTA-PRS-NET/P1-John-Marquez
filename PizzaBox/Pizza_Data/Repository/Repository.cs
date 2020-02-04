@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Pizza_Data.Models;
-using System;
+﻿using Pizza_Data.Models;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace Pizza_Data.Repository
