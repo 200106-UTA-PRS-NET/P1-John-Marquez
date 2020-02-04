@@ -23,7 +23,7 @@ steps:
     --configuration $(buildConfiguration)
     --logger trx
     --no-build
-    --results-directory $(Build.ArtifactStagingDirectory)/XUnitTestPizza/
+    --results-directory $(Build.ArtifactStagingDirectory)PizzaBox/XUnitTestPizza/
     /p:CollectCoverage=true
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
