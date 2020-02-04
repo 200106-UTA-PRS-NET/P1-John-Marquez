@@ -1,5 +1,4 @@
 
-
 trigger:
 - master
 
@@ -35,3 +34,8 @@ steps:
     /p:CollectCoverage=true
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
+
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
