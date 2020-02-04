@@ -1,13 +1,4 @@
-# ASP.NET Core
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'JohnP1SonarCloud'
-    organization: 'johnmarquezsonar'
-    scannerMode: 'MSBuild'
-    projectKey: 'sonarp1'
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 
 trigger:
 - master
@@ -20,6 +11,18 @@ variables:
   pathtosolution: 'PizzaBox/'
 
 steps:
+
+# ASP.NET Core
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'JohnP1SonarCloud'
+    organization: 'johnmarquezsonar'
+    scannerMode: 'MSBuild'
+    projectKey: 'sonarp1'
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 - script: 
     dotnet build --configuration $(buildConfiguration)
   workingDirectory: $(pathtosolution)
