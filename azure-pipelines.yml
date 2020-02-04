@@ -1,3 +1,6 @@
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
 - master
@@ -18,14 +21,14 @@ steps:
     organization: 'johnmarquezsonar'
     scannerMode: 'MSBuild'
     projectKey: 'sonarp1'
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 - script: 
     dotnet build --configuration $(buildConfiguration)
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+
 
 - script: dotnet test
     --configuration $(buildConfiguration)
@@ -35,7 +38,6 @@ steps:
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
 
-- task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
