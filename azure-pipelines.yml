@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  pathtosolution: 'PizzaBox/PizzaBox'
+  pathtosolution: 'PizzaBox/'
 
 steps:
 - script: 
@@ -21,16 +21,8 @@ steps:
 
 - script: dotnet test
     --configuration $(buildConfiguration)
-    --logger trx
     --no-build
-    --results-directory $(Build.ArtifactStagingDirectory)/test/
+    --results-directory $(Build.ArtifactStagingDirectory)/XUnitTestPizza/
     /p:CollectCoverage=true
   workingDirectory: $(pathtosolution)
   displayName: 'dotnet test'
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '*.trx'
-    searchFolder: '$(Build.ArtifactStagingDirectory)/test'
-  displayName: 'Publish test results'
