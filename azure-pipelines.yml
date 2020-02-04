@@ -11,10 +11,10 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  pathtosolution: 'P1-John-Marquez/PizzaBox/'
-  #pathtoproject: 'PizzaBox/PizzaBox'
-  #pathtotest: 'PizzaBox/PizzaTest'
+  pathtosolution: 'PizzaBox/PizzaBox'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: 
+    dotnet build --configuration $(buildConfiguration)
+  workingDirectory: $(pathtosolution)
   displayName: 'dotnet build $(buildConfiguration)'
