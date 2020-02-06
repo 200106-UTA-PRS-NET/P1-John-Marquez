@@ -6,7 +6,6 @@ namespace Pizza_Data.Repository
 {
     public static class Repository
     {
-
         //Getting Repository
         public static IEnumerable<PizzaLib.Employee> GetEmployees(Entity db) // creates query to gather total employee table information
         {

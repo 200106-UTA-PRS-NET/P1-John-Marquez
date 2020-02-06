@@ -1,6 +1,8 @@
-﻿using System;
+﻿using System.IO;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace Pizza_Data.Models
 {
@@ -26,10 +28,15 @@ namespace Pizza_Data.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=PizzaDb; Trusted_Connection=True;");
+                var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                IConfigurationRoot configuration = configBuilder.Build();
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaDb"));
             }
         }
+        
+        
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
